@@ -5,10 +5,8 @@ import 'dart:math';
 import 'package:chat/core/services/auth/auth_service.dart';
 import 'package:chat/model/chat_user.dart';
 
-
-
 class AuthMockService implements AuthService {
-  static final _defaultUser = ChatUser(
+  static const _defaultUser = ChatUser(
     id: '456',
     name: 'Nicolau',
     email: 'nicolau@test.com',
@@ -25,14 +23,17 @@ class AuthMockService implements AuthService {
     _updateUser(_defaultUser);
   });
 
+  @override
   ChatUser? get currentUser {
     return _currentUser;
   }
 
+  @override
   Stream<ChatUser?> get userChanges {
     return _userStream;
   }
 
+  @override
   Future<void> signup(
     String name,
     String email,
@@ -45,14 +46,17 @@ class AuthMockService implements AuthService {
       email: email,
       imageURL: image?.path ?? 'assets/images/avatar01.png',
     );
+
     _users.putIfAbsent(email, () => newUser);
     _updateUser(newUser);
   }
 
+  @override
   Future<void> login(String email, String password) async {
     _updateUser(_users[email]);
   }
 
+  @override
   Future<void> logout() async {
     _updateUser(null);
   }

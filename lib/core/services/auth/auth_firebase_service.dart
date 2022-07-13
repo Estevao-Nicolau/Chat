@@ -11,7 +11,7 @@ class AuthFirebaseService implements AuthService {
   static final _userStream = Stream<ChatUser?>.multi((controller) async {
     final authChanges = FirebaseAuth.instance.authStateChanges();
     await for (final user in authChanges) {
-      _currentUser = user == null ? null : toChatUser(user);
+      _currentUser = user == null ? null : _toChatUser(user);
       controller.add(_currentUser);
     }
   });
@@ -45,19 +45,25 @@ class AuthFirebaseService implements AuthService {
   }
 
   @override
-  Future<void> login(String email, String password) async {}
+  Future<void> login(String email, String password) async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+  }
 
   @override
   Future<void> logout() async {
     FirebaseAuth.instance.signOut();
   }
 
-  static ChatUser toChatUser(User user) {
+  static ChatUser _toChatUser(User user) {
     return ChatUser(
       id: user.uid,
       name: user.displayName ?? user.email!.split('@')[0],
       email: user.email!,
-      imageURL: user.photoURL ?? '',
+      imageURL: user.photoURL ??
+          'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
     );
   }
 }

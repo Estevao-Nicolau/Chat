@@ -2,11 +2,12 @@ import 'package:chat/model/chat_notification.dart';
 import 'package:flutter/cupertino.dart';
 
 class ChatNotificationService with ChangeNotifier {
-  List<ChatNotification> _items = [];
+  final List<ChatNotification> _items = [];
 
   int get itemsCount {
     return _items.length;
   }
+
   List<ChatNotification> get items {
     return [..._items];
   }
@@ -17,6 +18,7 @@ class ChatNotificationService with ChangeNotifier {
   }
 
   void remove(int i) {
-    _items.remove(i);
+    _items.removeAt(i);
+    notifyListeners();
   }
 }

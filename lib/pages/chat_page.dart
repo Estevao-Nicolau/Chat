@@ -27,17 +27,15 @@ class ChatPage extends StatelessWidget {
                 items: [
                   DropdownMenuItem(
                       value: 'logout',
-                      child: Container(
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.exit_to_app,
-                              color: Colors.black54,
-                            ),
-                            SizedBox(width: 10),
-                            Text('Sair'),
-                          ],
-                        ),
+                      child: Row(
+                        children: const [
+                          Icon(
+                            Icons.exit_to_app,
+                            color: Colors.black54,
+                          ),
+                          SizedBox(width: 10),
+                          Text('Sair'),
+                        ],
                       ))
                 ],
                 onChanged: (value) {
@@ -52,11 +50,11 @@ class ChatPage extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(builder: (cxt) {
-                      return NoticationPage();
+                      return const NoticationPage();
                     }),
                   );
                 },
-                icon: Icon(Icons.notifications),
+                icon: const Icon(Icons.notifications),
               ),
               Positioned(
                 top: 5,
@@ -66,7 +64,7 @@ class ChatPage extends StatelessWidget {
                   backgroundColor: Colors.deepOrange,
                   child: Text(
                     '${Provider.of<ChatNotificationService>(context).itemsCount}',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 12,
                     ),
                   ),
@@ -78,7 +76,7 @@ class ChatPage extends StatelessWidget {
       ),
       body: SafeArea(
         child: Column(
-          children: [
+          children: const [
             Expanded(child: Messages()),
             NewMessage(),
           ],

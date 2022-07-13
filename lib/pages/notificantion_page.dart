@@ -12,16 +12,14 @@ class NoticationPage extends StatelessWidget {
     final items = service.items;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Minhas Notificações'),
+        title: const Text('Minhas Notificações'),
       ),
-      body: Center(
-        child: ListView.builder(
-          itemCount: service.itemsCount,
-          itemBuilder: (ctx, i) => ListTile(
-            title: Text(items[i].title),
-            subtitle: Text(items[i].body),
-            onTap: () => service.remove(i),
-          ),
+      body: ListView.builder(
+        itemCount: service.itemsCount,
+        itemBuilder: (ctx, i) => ListTile(
+          title: Text(items[i].title),
+          subtitle: Text(items[i].body),
+          onTap: () => service.remove(i),
         ),
       ),
     );
