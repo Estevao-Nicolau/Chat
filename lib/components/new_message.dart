@@ -32,7 +32,7 @@ class _NewMessageState extends State<NewMessage> {
               onChanged: (msg) => setState(() => _message = msg),
               controller: _messageController,
               decoration: InputDecoration(
-                labelText: 'Enviar mensagem,,,',
+                labelText: 'Enviar mensagem',
               ),
               onSubmitted: (_) {
                 if (_message.trim().isEmpty) {

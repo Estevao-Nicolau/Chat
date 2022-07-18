@@ -1,16 +1,16 @@
-import 'package:chat/pages/chat_page.dart';
-import 'package:flutter/material.dart';
 
-import '../core/services/auth/auth_service.dart';
-import '../model/chat_user.dart';
+import 'package:chat/core/services/auth/auth_service.dart';
+import 'package:chat/model/chat_user.dart';
+import 'package:chat/pages/loading_page.dart';
+import 'package:flutter/material.dart';
 import 'auth_page.dart';
-import 'loading_page.dart';
+import 'chat_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 class AuthOrAppPage extends StatelessWidget {
   const AuthOrAppPage({Key? key}) : super(key: key);
 
-  Future<void> init(BuildContext) async {
+  Future<void> init(BuildContext context) async {
     await Firebase.initializeApp();
   }
 

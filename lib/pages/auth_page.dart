@@ -47,9 +47,7 @@ class _AuthPageState extends State<AuthPage> {
         children: [
           Center(
             child: SingleChildScrollView(
-              child: AuthForm(
-                onSubmit: _handleSubmit,
-              ),
+              child: AuthForm(onSubmit: _handleSubmit),
             ),
           ),
           if (_isLoading)
